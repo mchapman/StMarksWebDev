@@ -22,10 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="30" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
+            <state line="61" column="21" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.47265625">
               <folding />
             </state>
           </provider>
@@ -49,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="19" selection-end="19" vertical-scroll-proportion="0.1171875">
+            <state line="2" column="0" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -76,10 +76,6 @@
   </component>
   <component name="FrameworkCommandLineHistory">
     <commandsHistory>
-      <command text="ls" />
-      <command text="git add ." />
-      <command text="git init" />
-      <command text="ln -s /home/mark/Dropbox/Wishlist ./.git" />
       <command text="ls .git" />
       <command text="git add ." />
       <command text="git commit -am &quot;Initial Commit&quot;" />
@@ -100,6 +96,11 @@
       <command text="git push heroku master" />
       <command text="git push origin master" />
       <command text="git status" />
+      <command text="git status" />
+      <command text="git commit -am &quot;Correct Procfile&quot;" />
+      <command text="git push heroku master" />
+      <command text="git status" />
+      <command text="foreman" />
     </commandsHistory>
   </component>
   <component name="FrameworkServiceSettings">
@@ -117,9 +118,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/wishlist-mongodb.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -317,13 +318,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="30" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="13" selection-start="13" selection-end="13" vertical-scroll-proportion="0.0">
@@ -333,7 +327,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="19" selection-end="19" vertical-scroll-proportion="0.1171875">
+        <state line="2" column="0" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="21" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.47265625">
           <folding />
         </state>
       </provider>
