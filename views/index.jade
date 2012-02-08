@@ -1,0 +1,17 @@
+h1= title
+#wishlist
+	table(border='1')
+		tr
+			th Wisher
+			th Description
+			th Picture
+			th Price
+		- each wish in Wishlist
+			tr
+				td= wish.wisher
+				td
+					a(href=wish.url)= wish.description
+				td
+					img(src=wish.imgUrl, alt='A picture of the wish', height='50')
+				td= wish.price
+
