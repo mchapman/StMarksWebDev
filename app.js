@@ -59,6 +59,6 @@ app.post('/wish/new', function(req, res){
 });
 
 
-app.listen(env.PORT);
+app.listen(process.env.PORT);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
