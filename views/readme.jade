@@ -1,0 +1,52 @@
+h1= title
+
+#introduction
+    p   This is a very simple server app to store a number of wishlists.  in order to keep everything very simple there is very little validation and no concerns for privacy.
+    p   It is intended to be used as part of a web development course for primary school children (9-11 years old).
+    p   It should be used as follows (all paths are relative).
+    table(cellspacing='10')
+        tr
+            th URL
+            th Description
+        tr
+            td
+                b /
+            td This page
+        tr
+            td
+                b /user/all
+            td  A table showing all the wishes on the system
+        tr
+            td
+                b /user/:name
+            td  A table showing all the wishes for&nbsp;
+                em   :name
+                . For example
+                a(href='/user/Mark')
+                   /user/Mark
+        tr
+            td
+                b /user/:name.json
+            td  The wishlist for&nbsp;
+                em   :name
+                &nbsp;in json format.  For example
+                a(href='/user/Mark.json')
+                   /user/Mark.json
+        tr
+            td
+                b   /wish/new
+            td  Brings up a simple form to enter a new wish.
+        tr
+            td
+                b /wish/:id/remove
+            td  Tag the wish with _id&nbsp;
+                em  :id
+                &nbsp;for removal.  Optionally you can add
+                span.nobr
+                    b ?reason=a+reason+for+removal
+                \(such as the name of the person that bought it).  The + gets replaced with a space when the reason is stored.
+    p   All the&nbsp
+        b   /user
+        &nbspURLs can have
+        b   /debug
+        &nbspappended, which includes wishes tagged for removal.  This is helpful for testing.

@@ -21,11 +21,14 @@ WishlistProvider.prototype.getCollection= function(callback) {
   });
 };
 
-WishlistProvider.prototype.findAll = function(callback) {
+WishlistProvider.prototype.find = function(criteria, debug, callback) {
     this.getCollection(function(error, Wishlist_collection) {
       if( error ) callback(error)
       else {
-        Wishlist_collection.find().toArray(function(error, results) {
+        if (!debug) {
+            criteria.removed_at = { $exists : false }
+        }
+        Wishlist_collection.find(criteria).toArray(function(error, results) {
           if( error ) callback(error)
           else callback(null, results)
         });
@@ -33,35 +36,38 @@ WishlistProvider.prototype.findAll = function(callback) {
     });
 };
 
-
-WishlistProvider.prototype.findById = function(id, callback) {
+WishlistProvider.prototype.save = function(wishes, callback) {
     this.getCollection(function(error, Wishlist_collection) {
       if( error ) callback(error)
       else {
-        Wishlist_collection.findOne({_id: Wishlist_collection.db.bson_serializer.ObjectID.createFromHexString(id)}, function(error, result) {
-          if( error ) callback(error)
-          else callback(null, result)
+        if( typeof(wishes.length)=="undefined")
+          wishes = [wishes];
+
+        for( var i =0;i< wishes.length;i++ ) {
+          wish = wishes[i];
+          wish.created_at = new Date();
+        }
+
+        Wishlist_collection.insert(wishes, function() {
+          callback(null, wishes);
         });
       }
     });
 };
 
-WishlistProvider.prototype.save = function(Wishlists, callback) {
+WishlistProvider.prototype.remove = function(id, reason, callback) {
     this.getCollection(function(error, Wishlist_collection) {
-      if( error ) callback(error)
-      else {
-        if( typeof(Wishlists.length)=="undefined")
-          Wishlists = [Wishlists];
-
-        for( var i =0;i< Wishlists.length;i++ ) {
-          Wishlist = Wishlists[i];
-          Wishlist.created_at = new Date();
+        if( error ) callback( error );
+        else {
+            Wishlist_collection.update(
+                {_id: Wishlist_collection.db.bson_serializer.ObjectID.createFromHexString(id)},
+                {"$set": {reason_removed: reason, removed_at: new Date()}},
+                {},
+                function(error, article){
+                    if( error ) callback(error);
+                    else callback(null, article)
+                });
         }
-
-        Wishlist_collection.insert(Wishlists, function() {
-          callback(null, Wishlists);
-        });
-      }
     });
 };
 

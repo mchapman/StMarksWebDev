@@ -29,8 +29,16 @@ app.configure('production', function(){
 //var WishlistProvider= new WishlistProvider('localhost',27017);
 var WishlistProvider= new WishlistProvider('staff.mongohq.com', 10022, 'stmarks', 'stmarks', 'stmarks');
 
-app.get('/', function(req, res){
-    WishlistProvider.findAll( function(error,docs){
+app.get('/', function(req, res) {
+    res.render('readme.jade', { locals: {
+        title: 'Introduction'
+    }
+    });
+});
+
+app.get('/user/all/:debug?', function(req, res){
+    var debug = (req.params.debug === 'debug')
+    WishlistProvider.find({}, debug, function(error,docs){
         res.render('index.jade', { locals: {
             title: 'All Wishes',
             Wishlist: docs
@@ -39,10 +47,27 @@ app.get('/', function(req, res){
     })
 });
 
+app.get('/user/:name.:format?/:debug?', function(req, res){
+    var userName = req.params.name
+    var debug = (req.params.debug === 'debug')
+    WishlistProvider.find( {wisher: userName}, debug ,function(error,docs){
+        if (req.params.format === 'json') {
+            res.send(docs);
+        } else {
+            res.render('index.jade', { locals: {
+                title: 'Wishes for '+userName,
+                Wishlist: docs
+            }
+            });
+        }
+    })
+
+});
+
 app.get('/wish/new', function(req, res) {
     res.render('wish_new.jade', { locals: {
         title: 'New Wish'
-    }
+        }
     });
 });
 
@@ -58,7 +83,20 @@ app.post('/wish/new', function(req, res){
     });
 });
 
+app.get('/wish/:id/remove', function(req,res) {
+    WishlistProvider.remove(req.params.id, req.param('reason'), function( error, docs) {
+        res.send(req.params.id + ' succesfully removed')
+    });
+});
 
-app.listen(process.env.PORT);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+var port;
+if (app.settings.env === 'development') {
+    port = 3000;
+} else {
+    port = process.env.PORT;
+}
+
+app.listen(port);
+console.log("Express server listening on port %d in %s mode", port, app.settings.env);
+
 
