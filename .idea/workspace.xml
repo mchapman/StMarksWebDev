@@ -22,19 +22,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0">
+            <state line="99" column="0" selection-start="2605" selection-end="2605" vertical-scroll-proportion="0.80985916">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="example_ajax.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="example_ajax.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/example_ajax.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="24" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.83090377">
+            <state line="38" column="24" selection-start="1512" selection-end="1512" vertical-scroll-proportion="-23.75">
               <folding />
             </state>
           </provider>
@@ -111,9 +111,9 @@
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/wishlist-mongodb.js" />
         <option value="$PROJECT_DIR$/views/readme.jade" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/example.html" />
         <option value="$PROJECT_DIR$/public/example_ajax.html" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -445,13 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1309" selection-end="1309" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/example.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="11.875">
@@ -461,7 +454,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/example_ajax.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="24" selection-start="1512" selection-end="1512" vertical-scroll-proportion="0.83090377">
+        <state line="38" column="24" selection-start="1512" selection-end="1512" vertical-scroll-proportion="-23.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="0" selection-start="2605" selection-end="2605" vertical-scroll-proportion="0.80985916">
           <folding />
         </state>
       </provider>
