@@ -91,13 +91,12 @@ app.get('/wish/:id/remove', function(req,res) {
 });
 
 var port;
-if (app.settings.env === 'development') {
-    port = 3000;
-} else {
+//if (app.settings.env === 'development') {
+//    port = 3000;
+//} else {
     port = process.env.PORT;
-}
+//}
 
-//port = process.env.PORT;
 app.listen(port);
 console.log("Express server listening on port %d in %s mode", port, app.settings.env);
 
