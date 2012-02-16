@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Mark's Wishlist</title>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
 </head>
 <body>
 <p>Dear Father Christmas / Friends / Family,</p>
@@ -24,21 +25,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        $.get('/user/Mark.json', function(data) {
-            var rows = '';
-            for (var i=0; i<data.length; i++) {
-                rows = rows + '<tr>' +
-                        '<td>'+data[i].description+'</td>'+
-                        '<td><img src="'+data[i].imgUrl+'" alt="Picture of the present" height="80"/></td>'+
-                        '<td><button class="bought-it" data-id="'+data[i]._id+'">I have bought this</button></td>'
-                '</tr>';
+        $.getJSON('http://stmarkswebdev.herokuapp.com/user/Mark.json?callback=?',
+            function(json, textStatus, jqXHR) {
+                console.log("Hello3 "+textStatus+"     : "+jqXHR);
+                console.log(json);
+                var rows = '';
+                for (var i=0; i<json.length; i++) {
+                    rows = rows + '<tr>' +
+                            '<td>'+json[i].description+'</td>'+
+                            '<td><img src="'+json[i].imgUrl+'" alt="Picture of the present" height="80"/></td>'+
+                            '<td><button class="bought-it" data-id="'+json[i]._id+'">I have bought this</button></td>'
+                    '</tr>';
+                }
+                $('table#pressies tbody').html(rows);
+                $('button.bought-it').click(function(){
+                    $(this).parent().parent().hide(1500);
+                    $.get("http://stmarkswebdev.herokuapp.com/wish/"+$(this).attr('data-id')+'/remove?reason=Someone+bought+it');
+                });
             }
-            $('table#pressies tbody').html(rows);
-            $('button.bought-it').click(function(){
-                $(this).parent().parent().hide(1500);
-                $.get(" /wish/"+$(this).attr('data-id')+'/remove?reason=Someone+bought+it');
-            });
-        });
+        );
     });
 </script>
 </body>

@@ -11,6 +11,7 @@ var app = module.exports = express.createServer();
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.enable("jsonp callback");
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(require('stylus').middleware({ src: __dirname + '/public' }));
@@ -52,7 +53,7 @@ app.get('/user/:name.:format?/:debug?', function(req, res){
     var debug = (req.params.debug === 'debug')
     WishlistProvider.find( {wisher: userName}, debug ,function(error,docs){
         if (req.params.format === 'json') {
-            res.send(docs);
+            res.json(docs);
         } else {
             res.render('index.jade', { locals: {
                 title: 'Wishes for '+userName,
@@ -90,13 +91,13 @@ app.get('/wish/:id/remove', function(req,res) {
 });
 
 var port;
-/*if (app.settings.env === 'development') {
+if (app.settings.env === 'development') {
     port = 3000;
 } else {
     port = process.env.PORT;
-}*/
+}
 
-port = process.env.PORT;
+//port = process.env.PORT;
 app.listen(port);
 console.log("Express server listening on port %d in %s mode", port, app.settings.env);
 

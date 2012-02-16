@@ -32,6 +32,15 @@ h1= title
                 &nbsp;in json format.  For example
                 a(href='/user/Mark.json')
                    /user/Mark.json
+                . See below for an alternative link that you will need in a typical development environment.
+        tr
+            td
+                b /user/:name.json?callback=?
+            td  The wishlist for&nbsp;
+                em   :name
+                &nbsp;in jsonp format (which is necessary when working on an HTML file locally and loading it into your browser).  For example
+                a(href='/user/Mark.json?callback=123')
+                   /user/Mark.json?callback=123
         tr
             td
                 b   /wish/new
