@@ -27,8 +27,6 @@
     $(document).ready(function(){
         $.getJSON('http://stmarkswebdev.herokuapp.com/user/Mark.json?callback=?',
             function(json, textStatus, jqXHR) {
-                console.log("Hello3 "+textStatus+"     : "+jqXHR);
-                console.log(json);
                 var rows = '';
                 for (var i=0; i<json.length; i++) {
                     rows = rows + '<tr>' +
