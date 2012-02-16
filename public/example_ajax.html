@@ -25,7 +25,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        $.getJSON('stmarkswebdev.herokuapp.com/user/Mark.json?callback=?',
+        $.getJSON('http://stmarkswebdev.herokuapp.com/user/Mark.json?callback=?',
             function(json, textStatus, jqXHR) {
                 console.log("Hello3 "+textStatus+"     : "+jqXHR);
                 console.log(json);
