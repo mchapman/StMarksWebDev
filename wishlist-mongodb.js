@@ -28,6 +28,9 @@ WishlistProvider.prototype.find = function(criteria, debug, callback) {
         if (!debug) {
             criteria.removed_at = { $exists : false }
         }
+        if (criteria._id) {
+            criteria._id = Wishlist_collection.db.bson_serializer.ObjectID.createFromHexString(criteria._id)
+        }
         Wishlist_collection.find(criteria).toArray(function(error, results) {
           if( error ) callback(error)
           else callback(null, results)
@@ -52,6 +55,34 @@ WishlistProvider.prototype.save = function(wishes, callback) {
           callback(null, wishes);
         });
       }
+    });
+};
+
+WishlistProvider.prototype.update = function(id, wish, callback) {
+    this.getCollection(function(error, Wishlist_collection) {
+        if( error ) callback( error );
+        else {
+            Wishlist_collection.update(
+                {_id: Wishlist_collection.db.bson_serializer.ObjectID.createFromHexString(id)},
+                {"$set": wish},
+                {},
+                function(error){
+                    if( error ) callback(error);
+                });
+        }
+    });
+};
+
+WishlistProvider.prototype.delete = function(id, callback) {
+    this.getCollection(function(error, Wishlist_collection) {
+        if( error ) callback( error );
+        else {
+            Wishlist_collection.remove(
+                {_id: Wishlist_collection.db.bson_serializer.ObjectID.createFromHexString(id)},
+                function(err) {
+                    if(err) callback(err)
+                });
+        }
     });
 };
 

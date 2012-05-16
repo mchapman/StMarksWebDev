@@ -1,11 +1,12 @@
 h1= title
 #wishlist
-	table(cellspacing = 15)
+	table.table
 		tr
 			th Wisher
 			th Description
 			th Picture
 			th Price
+			th
 		- each wish in Wishlist
 			tr
 				td= wish.wisher
@@ -14,4 +15,8 @@ h1= title
 				td
 					img(src=wish.imgUrl, alt='A picture of the wish', height='50')
 				td= wish.price
-
+				td
+					a.icon-pencil(href='/wish/'+wish._id+'/edit')
+					a.icon-trash.destroy(href='/wish/'+wish._id)
+script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
+script(type='text/javascript', src='/js/delete.js')
