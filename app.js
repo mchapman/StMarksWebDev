@@ -91,6 +91,12 @@ app.get('/wish/:id/remove', function (req, res) {
     });
 });
 
+app.get('/wish/:id/restore', function (req, res) {
+    WishlistProvider.restore(req.params.id, function (error, docs) {
+        res.send(req.params.id + ' successfully restored')
+    });
+});
+
 app.get('/wish/:id/edit', function (req, res) {
     WishlistProvider.find({_id: req.params.id}, true, function (error, doc) {
         if (error || typeof doc[0] === "undefined") {

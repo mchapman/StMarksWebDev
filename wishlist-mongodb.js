@@ -102,4 +102,20 @@ WishlistProvider.prototype.remove = function(id, reason, callback) {
     });
 };
 
+WishlistProvider.prototype.restore = function(id, callback) {
+    this.getCollection(function(error, Wishlist_collection) {
+        if( error ) callback( error );
+        else {
+            Wishlist_collection.update(
+                {_id: Wishlist_collection.db.bson_serializer.ObjectID.createFromHexString(id)},
+                {"$unset": {reason_removed: 1, removed_at: 1}},
+                {},
+                function(error, article){
+                    if( error ) callback(error);
+                    else callback(null, article)
+                });
+        }
+    });
+};
+
 exports.WishlistProvider = WishlistProvider;
